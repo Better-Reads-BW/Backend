@@ -40,11 +40,45 @@ function saveUserBookList(book){
 }
 
 // gets a list of user's books // get
-function savedBooksList(user_id) {
-    return db('saved_list')
-        .innerJoin('books', 'saved_list.book_id', 'books.id')
-        .where({ user_id })
-        .select('books.id', 'books.title', 'books.author', 'books.isbn')
+function savedBooksList(addBook, user_id) {
+    // console.log(addBook, user_id)
+    return db('users')
+            .where({ id: user_id })
+            .first()
+            .then((result) => {
+                // console.log('results', result)
+                return db('books')
+                    .insert(addBook)
+                    .then((id) => {
+                        // console.log('id', id)
+                        return db('saved_list')
+                        .insert({ user_id, book_id:id[0]})
+                        .then(ids => {
+                            // console.log("ids", ids)
+                            return db('saved_list')
+                            .where({ user_id })
+                            .then(list => {
+                                // console.log('res', list)
+                                // list.map(each => {
+                                //     each.book_id
+                                // })
+                                return db('books')
+                                .where({ id: list.map(each => {
+                                    return each.book_id
+                                })})
+                                .then(bid => {
+                                    console.log('bid', bid)
+                                    return { ...result, books:bid}
+                                })
+                            })
+                        })
+                    })
+            }).catch((err) => {
+                
+            });
+        // .innerJoin('books', 'saved_list.book_id', 'books.id')
+        // .where({ user_id })
+        // .select('books.id', 'books.title', 'books.author', 'books.isbn')
 }
 
 // gets a list of all books in the table // get
