@@ -1,7 +1,7 @@
 const db = require('../dbConfig');
 
 module.exports = {
-    addBooks,
+    addBooksDb,
     findById,
     findByIsbn,
     saveUserBookList,
@@ -11,9 +11,9 @@ module.exports = {
 }
 
 // adds to the books table // post
-function addBooks(book){
+function addBooksDb(book){
     const [id] = db('books')
-        .insert(book, id)
+        .insert(book, "id")
         return findById(id)
 }
 
@@ -33,9 +33,10 @@ function findByIsbn(isbn){
 
 // Book is saved to a user's list // post
 function saveUserBookList(book){
-    const [id] = db('saved_list')
+    
+    const id = db('saved_list')
         .insert(book, 'id')
-        return savedList(book.user_id)
+        return savedBooksList(book.user_id)
 }
 
 // gets a list of user's books // get

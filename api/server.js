@@ -4,8 +4,8 @@ const helmet = require('helmet');
 
 const auth = require('../assist/auth/restrict.js')
 const authRouter = require('../routes/auth/authRouter.js');
-const readsRouter = require('../routes/readsRouter.js');
-
+const usersRouter = require('../routes/usersRouter.js');
+const booksRouter = require('../routes/booksRouter.js');
 
 const server = express();
 
@@ -14,6 +14,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/auth', authRouter);
-server.use('/api/reads', readsRouter);
+server.use('/api/users', usersRouter);
+server.use('/api/books', booksRouter);
 
 module.exports = server;
