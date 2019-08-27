@@ -6,19 +6,18 @@ exports.up = function(knex, Promise) {
         .string('username', 128)
         .unique()
         .notNullable();
-
     tbl
         .string('password', 128)
         .notNullable();
+    tbl
+        .string('firstName', 128);
+    tbl
+        .string('lastName', 128);
+    tbl
+        .string('aboutMe');
 
     tbl
-        .string('firstName', 128)
-        .notNullable();
-    tbl
-        .string('lastName', 128)
-        .notNullable();
-
-
+        .string('email');
  }) 
 };
 
