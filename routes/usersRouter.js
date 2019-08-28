@@ -2,7 +2,7 @@ const Users  = require('../database/models/usersModels');
 const router = require('express').Router();
 const restrict = require('../assist/auth/restrict')
 
-
+// get a list of users once logged in
 router.get('/', restrict,(req, res) => {
     Users.find()
         .then(users => {
@@ -18,6 +18,7 @@ router.get('/', restrict,(req, res) => {
         });
 });
 
+// get a specific user by id
 router.get('/:id',(req,res) => {
     let { id } = req.params;
     Users.findById(id)
@@ -32,6 +33,7 @@ router.get('/:id',(req,res) => {
         });
 });
 
+// Update a user with { username, password, firstName, lastName, email, about me}
 router.put('/:id/edit', restrict, (req, res) => {
     let user = req.body;
     let id = req.params.id;
@@ -49,6 +51,7 @@ router.put('/:id/edit', restrict, (req, res) => {
         
 });
 
+// remove a user
 router.delete('/:id/delete', restrict,(req, res) => {
     let { id } = req.params;
 

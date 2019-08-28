@@ -3,56 +3,43 @@ const db = require('../dbConfig');
 module.exports = {
   add,
   find,
-  findBy,
   findByUser, 
   findById, 
   remove, 
   update,
-  findBooksByUserId
 };
-
+// get list of users
 function find() {
   return db('users')
     .select('id', 'username');
 };
-
-function findBy(filter) {
-  return db('users')
-    .where(filter);
-};
+// used to login a user
 function findByUser(user) {
   return db('users')
   .where(user);
 }
-
+// used to register a user
 function add(user) {
   return db('users')
     .insert(user, 'id');
 };
-
+// get user by id
 function findById(id) {
   return db('users')
     .where({ id })
     .select('firstName', 'lastName')
     .first();
 };
-
-async function findBooksByUserId(id) {
-  const books = await db('books')
-    .where({ user_id: id });
-    console.log(books)
-    return books;
+// update the user // put
+function update(user, id) {
+  return db('users')
+    .where({ id })
+    .update(user);
 }
-
+// remove a user
 function remove(id) {
   return db('users')
     .where({ id })
     .first()
     .delete();
 };
-
-function update(user, id) {
-  return db('users')
-    .where({ id })
-    .update(user);
-}
