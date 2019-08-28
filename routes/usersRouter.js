@@ -19,7 +19,7 @@ router.get('/all', restrict,(req, res) => {
 });
 
 // get a specific user by id
-router.get('/:id',(req,res) => {
+router.get('/:id', restrict,(req,res) => {
     let { id } = req.params;
     Users.findById(id)
         .then((user) => {
@@ -34,7 +34,7 @@ router.get('/:id',(req,res) => {
 });
 
 // Update a user with { username, password, firstName, lastName, email, about me}
-router.put('/:id/edit', (req, res) => {
+router.put('/:id/edit', restrict,(req, res) => {
     let user = req.body;
     let id = req.params.id;
     
