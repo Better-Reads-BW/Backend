@@ -3,7 +3,7 @@ const router = require('express').Router();
 const restrict = require('../assist/auth/restrict')
 
 // get a list of users once logged in
-router.get('/', restrict,(req, res) => {
+router.get('/all', restrict,(req, res) => {
     Users.find()
         .then(users => {
             if (users){
@@ -34,10 +34,10 @@ router.get('/:id',(req,res) => {
 });
 
 // Update a user with { username, password, firstName, lastName, email, about me}
-router.put('/:id/edit', restrict, (req, res) => {
+router.put('/:id/edit', (req, res) => {
     let user = req.body;
     let id = req.params.id;
-    console.log(user,'<<<>>>', id)
+    
     Users.update(user, id)
         .then(userUpdated => {
             if (userUpdated){
