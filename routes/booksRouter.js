@@ -6,27 +6,37 @@ const axios = require('axios');
 
 
 router.post('/save', restrict, (req, res) => {
-    // the goal is to have the bookId come from the middleware
     const addBook = req.body;
     const userId = req.user.subject;
    
     Books
         .savedBooksList(addBook, userId)
         .then((saved) => {
-            res.status(201).json(saved);
+            res.status(201).json({saved, savedBooks: addBook});
         }).catch((err) => {
             res.status(500).json(console.log(err));
         });
 });
 
-router.delete('/delete', (req, res) => {
-    const userId = req.user.subject
-    const removeBook = req.body
+router.get('/allbooks', restrict, (req, res) => {
+    Books
+        .getBookList()
+        .then((allBooks) => {
+            res.status(200).json(allBooks);
+        }).catch((err) => {
+            res.status(500).json({ message: "Could not retrieve book list."});
+        });
+});
 
-    const deleted = Books.deleteFromList(userId, removeBook)
-        .then((result) => {
-            if (deleted) {
-                res.status(200).json({ deleted });
+router.delete('/:id/delete', (req, res) => {
+    const {id} = req.params;
+    // const userId = req.user.subject;
+    console.log(req.user)
+
+    const del = Books.deleteFromList(id)
+         del.then((deleted) => {
+            if (id) {
+               res.status(200).json(deleted );
             } else {
                 res.status(401).json({ message: "Could not find book."});
             }

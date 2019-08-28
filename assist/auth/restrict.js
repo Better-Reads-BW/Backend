@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
       if (err) {
         res.status(401).json({ error: 'You have no access.' });
       } else {
-        req.user = decodedToken;
+        req.user = {decodedToken};
         next();
       }
     })

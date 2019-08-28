@@ -7,9 +7,11 @@ exports.up = function(knex, Promise) {
         .notNullable()
         .unique();
     tbl
-        .string('title')
+        .string('book_title')
     tbl
-        .string('author')
+        .string('book_authors')
+    tbl
+        .string('book_desc')
   });
 };
 

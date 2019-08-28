@@ -55,9 +55,6 @@ function savedBooksList(addBook, user_id) {
                             .where({ user_id })
                             .then(list => {
                                 return db('books')
-                                
-                                // .join('saved_list', 'books.id', 'saved_list.book_id')
-                                // .select('books.*')
                                 .where({id: list[0].book_id})
                                 .then(bid => {
                                     console.log('bid', bid)
@@ -67,24 +64,22 @@ function savedBooksList(addBook, user_id) {
                         })
                     })
             }).catch((err) => {
-                
+            
             });
-        // .innerJoin('books', 'saved_list.book_id', 'books.id')
-        // .where({ user_id })
-        // .select('books.id', 'books.title', 'books.author', 'books.isbn')
+        
 }
 
 // gets a list of all books in the table // get
 function getBookList(){
     return db('saved_list')
         .innerJoin('books', 'saved_list.book_id', 'books.id')
-        .select('books.id', 'saved_list.book_id', 'books.isbn', 'books.title', 'books.author' )
+        .select('books.id', 'saved_list.book_id', 'books.isbn', 'books.book_title', 'books.book_authors', 'books.book_desc' )
 }
 
 // deleting book from the user's list // delete
-function deleteFromList(user_id, book_id){
+function deleteFromList(user_id){
     return db('saved_list')
         .where({ user_id })
-        .andWhere({ book_id })
+        // .andWhere({ book_id })
         .delete()
 }
