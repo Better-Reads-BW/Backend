@@ -91,3 +91,4 @@ typings/
 *.db3
 auth.db3
 test.db3
+misc.js
