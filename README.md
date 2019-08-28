@@ -31,16 +31,27 @@ _HTTP method:_ **[POST]**
 ### **Register/Login**
  Method | Endpoint | Description 
  ------ | -------- | -----------
- POST | `/api/auth/register` | accepts `username`, `password`, and creates a  `user`, and returns an id number
+ POST | `/api/auth/register` | accepts `username`, `password`, and creates a  `user`, and returns an id number.  Username must not match a existing name. 
  POST | `/api/auth/login` | accepts `username` and `password` and returns a message welcoming user, and a token if username and passwords match
+----------
+### Example of Accepted Register Schema
 
- #### Example of Accepted Register/Login Schema
+`{
+	"username":"test2",
+	"password":"test",
+	"firstName":"Bill",
+	"lastName":"Paid",
+	"aboutMe":"I paid you already",
+	"email":"test@email.com"
+}`
+
+ ### Example of Accepted Login Schema
 
 ``{
  “username”: test2"
  “password”: test",
-}
-``
+}``
+
 
 ``{
  “message”: “Welcome test2",
