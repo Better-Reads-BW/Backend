@@ -20,8 +20,6 @@ exports.up = function(knex, Promise) {
         .onDelete('CASCADE')
         
   });
-
-
 };
 
 exports.down = function(knex, Promise) {

@@ -41,34 +41,27 @@ function saveUserBookList(book){
 
 // gets a list of user's books // get
 function savedBooksList(addBook, user_id) {
-    // console.log(addBook, user_id)
     return db('users')
             .where({ id: user_id })
             .first()
             .then((result) => {
-                // console.log('results', result)
                 return db('books')
                     .insert(addBook)
                     .then((id) => {
-                        // console.log('id', id)
                         return db('saved_list')
                         .insert({ user_id, book_id:id[0]})
                         .then(ids => {
-                            // console.log("ids", ids)
                             return db('saved_list')
                             .where({ user_id })
                             .then(list => {
-                                // console.log('res', list)
-                                // list.map(each => {
-                                //     each.book_id
-                                // })
                                 return db('books')
-                                .where({ id: list.map(each => {
-                                    return each.book_id
-                                })})
+                                
+                                // .join('saved_list', 'books.id', 'saved_list.book_id')
+                                // .select('books.*')
+                                .where({id: list[0].book_id})
                                 .then(bid => {
                                     console.log('bid', bid)
-                                    return { ...result, books:bid}
+                                    return bid
                                 })
                             })
                         })
