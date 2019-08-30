@@ -52,7 +52,7 @@ router.put('/:id/edit', restrict,(req, res) => {
 });
 
 // remove a user
-router.delete('/:id/delete', restrict,(req, res) => {
+router.delete('/:id/delete',(req, res) => {
     let { id } = req.params;
 
     Users.remove(id)
