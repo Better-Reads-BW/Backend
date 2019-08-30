@@ -17,4 +17,8 @@ server.use('/api/auth', authRouter);
 server.use('/api/users', usersRouter);
 server.use('/api/books', booksRouter);
 
+server.get('/', (req, res) => {
+    res.send("<h1>Welcome to our Better Reads Server</h1>")
+});
+
 module.exports = server;
