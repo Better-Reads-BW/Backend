@@ -67,9 +67,9 @@ _HTTP method:_ **[POST]**
 ### **Books**
 Method | Endpoint | Headers | Description
 ------ | -------- | ------- | -----------
-GET | `/api/Books` | Authorization(token) | Returns Books with name and id
-POST | `/api/Books/save` | Authorization(token) | Adds new book to the users account
-DELETE | `/api/Books/:id/delete` | Authorization(token) | Removes list from users account
+GET | `/api/books/allbooks` | Authorization(token) | Returns Books with name and id
+POST | `/api/books/save` | Authorization(token) | Adds new book to the users account
+DELETE | `/api/books/:id/delete` | Authorization(token) | Removes list from users account
 
 ### Accepted book schema for saving a book
 ``{

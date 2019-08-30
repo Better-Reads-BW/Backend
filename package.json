@@ -8,7 +8,7 @@
     "server": "nodemon index.js",
     "test": "jest --watch",
     "heroku-postbuild": "npm install --production && knex migrate:latest && knex seed:run"
-  },
+  }, 
   "keywords": [],
   "author": "",
   "license": "ISC",
