@@ -18,7 +18,7 @@ router.post('/save', restrict, (req, res) => {
         });
 });
 
-router.get('/allbooks', restrict, (req, res) => {
+router.get('/allbooks', (req, res) => {
     Books
         .getBookList()
         .then((allBooks) => {
@@ -49,10 +49,9 @@ router.delete('/:id/delete', (req, res) => {
 // This sends description information to the api and returns json information about book recommendations to the user
 router.post('/recommend',(req, res) => {
     const book_desc = req.body
-   console.log(book_desc, "book")
     axios.post(`http://bettereads.herokuapp.com/api`, book_desc)
         .then(info => {
-            console.log(info)
+            console.log(info.data)
           res.json(info.data)
         }).catch(({error}) => {
             res.status(500).json(error);
