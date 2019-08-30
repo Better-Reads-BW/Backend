@@ -96,10 +96,9 @@ POST | `/api/books/recommend` | Authorization(token) | Returns a list of recomme
 
 `
   "14435": {
-    "book_authors": "Cesar Millan|Melissa Jo Peltier",
-    "book_desc": "recogn dog expert star nation geograph hit show dog whisper see world eye dog final elimin problem appear show roster celebr client realiti televis soughtaft trainer tradit expertis lie uniqu abil comprehend dog trace amaz journey farm mexico celebr palac recount learn make dog share lay groundwork satisfi relationship canin formula content balanc dog seem imposs take reader basic dog psycholog share insid detail fascin use illustr common behavior issu develop dog realli need may give natur pack instinct key happi relationship relat dog canin level problem owner choos dog right famili differ disciplin punish much fascin anecdot longtim includ foreword presid intern associ canin profession book need forg reward connect also avail random hous",
-    "book_title": "Cesar's Way: The Natural, Everyday Guide to Understanding and Correcting Common Dog Problems",
-    "cs": 0.5280288484
+    "book_authors": "Raymond Sturgis",
+    "book_desc": "PLEASE GO TO: WWW.AUDIBLE.COM/iTUNES_ for this book and others from RAYMOND STURGIS.----SOME BOOKS JUST SOUND BETTER IN AUDIO! Each day that is blessed to us, some black man, woman or child has been killed or mistreated by police or from another black person. Black people in America should have always organized against injustices from police and other misguided blacks who are a threat to their survival. I cannot understand that after hundreds of years and comprehensive progress in civil and human rights, that black people's lives are still not valued or respected. Black Lives Matter is a book that expounds on the realities and hardships of black people living in America. The clouds of hate and distrust must end. So black people can avoid the senseless violence and disrespect they endure from other black people, police and government. If BLACK LIVES TRULY MATTER, then swift justice must be enforced for those that violated the freedoms and peace of blacks trying to live in America.",
+    "book_title": "Black Lives Matter: Is It Open Season on Killing and Mistreating Blacks in America",
   }`
  
 

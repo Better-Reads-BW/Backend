@@ -49,6 +49,7 @@ router.delete('/:id/delete', (req, res) => {
 // This sends description information to the api and returns json information about book recommendations to the user
 router.post('/recommend',(req, res) => {
     const book_desc = req.body
+    
     axios.post(`http://bettereads.herokuapp.com/api`, book_desc)
         .then(info => {
             console.log(info.data)
@@ -56,7 +57,7 @@ router.post('/recommend',(req, res) => {
         }).catch(({error}) => {
             res.status(500).json(error);
         })
-
+   
 })
 
 module.exports = router;
